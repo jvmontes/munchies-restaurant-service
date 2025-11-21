@@ -1,5 +1,5 @@
 import { FilterType } from "@/src/app/types/restaurant";
-import Image from "next/image";
+import AppLogo from "@/src/components/AppLogo";
 import FilterCardCollection from "../FilterCardCollection";
 import Restaurants from "../Restaurants";
 
@@ -16,15 +16,7 @@ export default function DesktopRestaurantsView({
 }: DesktopRestaurantsViewProps) {
 
     return <div>
-        {/* TODO: Fix dark mode, currently illegible black text on black background */}
-        <Image
-            src="/logos/Vector.svg"
-            alt="Munchies"
-            width={274}
-            height={40}
-            priority
-            className="pt-16"
-        />
+        <AppLogo width={274} height={40} className="pt-16" />
 
         {/* <SideBar>Implement Side Bar - Should use flex & take up about 20% of the left side of the screen </p> */}
         <FilterCardCollection
