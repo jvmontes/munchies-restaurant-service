@@ -49,14 +49,13 @@ export default function Restaurants({ apiEndpoint = "/api/restaurants", onSelect
           <li
             key={r.id}
           >
-            <div>
+            <div className="w-[327px] border border-gray-200 rounded-lg p-4">
               {r.image_url ? (
                 <Image
                   src={r.image_url}
                   alt={r.name}
-                  width={200}
-                  height={200}
-                  style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                  width={140}
+                  height={140}
                 />
               ) : (
                 <span style={{ color: "#888", fontSize: 12 }}>No image</span>
