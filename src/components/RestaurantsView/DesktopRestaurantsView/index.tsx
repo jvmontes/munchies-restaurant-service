@@ -3,7 +3,17 @@ import Image from "next/image";
 import FilterCardCollection from "../FilterCardCollection";
 import Restaurants from "../Restaurants";
 
-export default function DesktopRestaurantsView({ filters }: { filters: FilterType[] }) {
+interface DesktopRestaurantsViewProps {
+    filters: FilterType[];
+    selectedFilterId: string | null;
+    onSelectFilter: (filterId: string) => void;
+}
+
+export default function DesktopRestaurantsView({
+    filters,
+    selectedFilterId,
+    onSelectFilter
+}: DesktopRestaurantsViewProps) {
 
     return <div>
         {/* TODO: Fix dark mode, currently illegible black text on black background */}
@@ -15,9 +25,13 @@ export default function DesktopRestaurantsView({ filters }: { filters: FilterTyp
             priority
             className="pt-16"
         />
-        //side bar
+
         <p>Side Bar</p>
-        <FilterCardCollection filters={filters} />
-        <Restaurants />
+        <FilterCardCollection
+            filters={filters}
+            selectedFilterId={selectedFilterId}
+            onSelectFilter={onSelectFilter}
+        />
+        <Restaurants selectedFilterId={selectedFilterId} />
         </div>;
 }

@@ -1,25 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Restaurants from "./Restaurants";
-import Filter from "./Filter";
 import { FilterApiResponse, FilterType } from "@/src/app/types/restaurant";
 import { useIsMobile } from "@/src/hooks/use-mobile";
 import MobileRestaurantsView from "./MobileRestaurantsView";
 import DesktopRestaurantsView from "./DesktopRestaurantsView";
 
-type RestaurantViewProps = {
-  placeholder?: string;
-  onChange?: (value: string) => void;
-};
-
-export default function RestaurantsView({
-  placeholder = "Search restaurants...",
-  onChange,
-}: RestaurantViewProps) {
+export default function RestaurantsView() {
   const [filters, setFilters] = useState<FilterType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedFilterId, setSelectedFilterId] = useState<string | null>(null);
 
   const isMobile = useIsMobile();
+
+  const handleFilterSelect = (filterId: string) => {
+    setSelectedFilterId(prev => prev === filterId ? null : filterId);
+  };
 
   useEffect(() => {
     const fetchFilter = async () => {
@@ -53,9 +48,17 @@ export default function RestaurantsView({
       ) : (
         <>
           {isMobile ? (
-            <MobileRestaurantsView filters={filters} />
+            <MobileRestaurantsView
+              filters={filters}
+              selectedFilterId={selectedFilterId}
+              onSelectFilter={handleFilterSelect}
+            />
           ) : (
-            <DesktopRestaurantsView filters={filters} />
+            <DesktopRestaurantsView
+              filters={filters}
+              selectedFilterId={selectedFilterId}
+              onSelectFilter={handleFilterSelect}
+            />
           )}
         </>
       )}

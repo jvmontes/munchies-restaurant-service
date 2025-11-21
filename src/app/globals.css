@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand colors - TODO: Move to tailwind.config.ts theme in the future */
+  --color-brand-green: #00703A;
 }
 
 @theme inline {

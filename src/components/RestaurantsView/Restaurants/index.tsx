@@ -1,14 +1,19 @@
 'use client'
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { RestaurantType } from "@/src/app/types/restaurant";
 
 type Props = {
   apiEndpoint?: string;
   onSelect?: (restaurant: RestaurantType) => void;
+  selectedFilterId?: string | null;
 };
 
-export default function Restaurants({ apiEndpoint = "/api/restaurants", onSelect }: Props) {
+export default function Restaurants({
+  apiEndpoint = "/api/restaurants",
+  onSelect,
+  selectedFilterId
+}: Props) {
   const [restaurants, setRestaurants] = useState<RestaurantType[]>([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,6 +41,10 @@ export default function Restaurants({ apiEndpoint = "/api/restaurants", onSelect
     };
   }, [apiEndpoint]);
 
+  const filteredRestaurants = selectedFilterId
+    ? restaurants.filter(r => r.filter_ids.includes(selectedFilterId))
+    : restaurants;
+
   return (
     <div>
       <header>
@@ -45,7 +54,7 @@ export default function Restaurants({ apiEndpoint = "/api/restaurants", onSelect
       {loading && <div>Loading restaurants…</div>}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {restaurants.map((r) => (
+        {filteredRestaurants.map((r) => (
           <div
             key={r.id}
             className="border border-gray-200 rounded-lg p-4"
