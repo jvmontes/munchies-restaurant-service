@@ -44,9 +44,21 @@ export default function RestaurantsView({
     };
 
     fetchFilter();
-  });
+  }, []);
 
   return (
-    <>{isMobile ? <MobileRestaurantsView /> : <DesktopRestaurantsView />}</>
+    <>
+      {isLoading ? (
+        <p>Loading your experience...</p>
+      ) : (
+        <>
+          {isMobile ? (
+            <MobileRestaurantsView filters={filters} />
+          ) : (
+            <DesktopRestaurantsView />
+          )}
+        </>
+      )}
+    </>
   );
 }
