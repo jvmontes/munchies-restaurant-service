@@ -44,28 +44,26 @@ export default function Restaurants({ apiEndpoint = "/api/restaurants", onSelect
 
       {loading && <div>Loading restaurants…</div>}
 
-      <ul >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {restaurants.map((r) => (
-          <li
+          <div
             key={r.id}
+            className="border border-gray-200 rounded-lg p-4"
           >
-            <div className="w-[327px] border border-gray-200 rounded-lg p-4">
-              {r.image_url ? (
-                <Image
-                  src={r.image_url}
-                  alt={r.name}
-                  width={140}
-                  height={140}
-                />
-              ) : (
-                <span style={{ color: "#888", fontSize: 12 }}>No image</span>
-              )}
-              <p>{r.name}</p>
-            </div>
-
-          </li>
+            {r.image_url ? (
+              <Image
+                src={r.image_url}
+                alt={r.name}
+                width={140}
+                height={140}
+              />
+            ) : (
+              <span style={{ color: "#888", fontSize: 12 }}>No image</span>
+            )}
+            <p>{r.name}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

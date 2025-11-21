@@ -3,11 +3,15 @@ import FilterCardCollection from "../FilterCardCollection";
 import Restaurants from "../Restaurants";
 
 export default function MobileRestaurantsView({ filters }: { filters: FilterType[] }) {
-    return <div>
-        <h1>[logo] Munchies</h1>
-        <h2>Delivery Time</h2>
-        <p>Delivery Time Cards</p>
+    return <div className="w-full overflow-x-hidden">
+        <div className="px-4">
+            <h1>[logo] Munchies</h1>
+            <h2>Delivery Time</h2>
+            <p>Delivery Time Cards</p>
+        </div>
         <FilterCardCollection filters={filters} />
-        <Restaurants />
+        <div className="px-4">
+            <Restaurants />
+        </div>
     </div>;
 }
