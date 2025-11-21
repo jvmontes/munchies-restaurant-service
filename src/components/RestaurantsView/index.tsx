@@ -17,6 +17,8 @@ export default function RestaurantsView() {
   };
 
   useEffect(() => {
+    // Fetch filters from the API
+    // Add additional fetching inside the Promise.all([]) if needed in the future
     const fetchFilter = async () => {
       try {
         setIsLoading(true);
