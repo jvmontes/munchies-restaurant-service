@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Restaurants from "./Restaurants";
 import Filter from "./Filter";
+import { FilterApiResponse, FilterType } from "@/src/app/types/restaurant";
 
 type RestaurantViewProps = {
   placeholder?: string;
@@ -12,13 +13,33 @@ export default function RestaurantsView({
   placeholder = "Search restaurants...",
   onChange,
 }: RestaurantViewProps) {
-  const [query, setQuery] = useState("");
+  const [filters, setFilters] = useState<FilterType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setQuery(value);
-    onChange?.(value);
-  };
+  useEffect(() => {
+    const fetchFilter = async () => {
+      try {
+        setIsLoading(true);
+        const [filterResponse] = await Promise.all([fetch("/api/filter")]);
+
+        if (!filterResponse.ok) {
+          throw new Error("Failed to fetch filters");
+        }
+
+        const [filterData] = (await Promise.all([filterResponse.json()])) as [
+          FilterApiResponse
+        ];
+
+        setFilters(filterData.filters);
+      } catch (error) {
+        console.error("Error fetching filters:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchFilter();
+  });
 
   return (
     <div>

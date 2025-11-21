@@ -13,3 +13,7 @@ export interface FilterType {
     name: string;
     image_url: string;
 }
+
+export interface FilterApiResponse {
+    filters: FilterType[];
+}
