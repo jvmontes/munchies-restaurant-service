@@ -55,7 +55,7 @@ export default function RestaurantsView({
           {isMobile ? (
             <MobileRestaurantsView filters={filters} />
           ) : (
-            <DesktopRestaurantsView />
+            <DesktopRestaurantsView filters={filters} />
           )}
         </>
       )}
