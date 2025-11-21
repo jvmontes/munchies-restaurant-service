@@ -26,7 +26,7 @@ export default function DesktopRestaurantsView({
             className="pt-16"
         />
 
-        <p>Side Bar</p>
+        {/* <SideBar>Implement Side Bar - Should use flex & take up about 20% of the left side of the screen </p> */}
         <FilterCardCollection
             filters={filters}
             selectedFilterId={selectedFilterId}

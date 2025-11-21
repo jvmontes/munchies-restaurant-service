@@ -15,7 +15,6 @@ export default function Restaurants({
   selectedFilterId
 }: Props) {
   const [restaurants, setRestaurants] = useState<RestaurantType[]>([]);
-  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -42,7 +41,13 @@ export default function Restaurants({
   }, [apiEndpoint]);
 
   const filteredRestaurants = selectedFilterId
-    ? restaurants.filter(r => r.filter_ids.includes(selectedFilterId))
+    ? restaurants.filter(r => {
+        const matches = r.filter_ids.includes(selectedFilterId);
+        if (matches) {
+          console.log(`Restaurant "${r.name}" matches filter ${selectedFilterId}:`, r.filter_ids);
+        }
+        return matches;
+      })
     : restaurants;
 
   return (
