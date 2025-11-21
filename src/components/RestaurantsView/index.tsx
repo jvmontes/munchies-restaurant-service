@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import Restaurants from "./Restaurants";
 import Filter from "./Filter";
 import { FilterApiResponse, FilterType } from "@/src/app/types/restaurant";
+import { useIsMobile } from "@/src/hooks/use-mobile";
+import MobileRestaurantsView from "./MobileRestaurantsView";
+import DesktopRestaurantsView from "./DesktopRestaurantsView";
 
 type RestaurantViewProps = {
   placeholder?: string;
@@ -15,6 +18,8 @@ export default function RestaurantsView({
 }: RestaurantViewProps) {
   const [filters, setFilters] = useState<FilterType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const fetchFilter = async () => {
@@ -42,11 +47,6 @@ export default function RestaurantsView({
   });
 
   return (
-    <div>
-      <header>[Logo] Munchies</header>
-
-      <Filter />
-      <Restaurants apiEndpoint="/api/restaurants" />
-    </div>
+    <>{isMobile ? <MobileRestaurantsView /> : <DesktopRestaurantsView />}</>
   );
 }
