@@ -1,22 +1,15 @@
 'use client'
 import React, { useEffect, useMemo, useState } from "react";
-
-type Restaurant = {
-  id: string;
-  name: string;
-  address?: string;
-  cuisine?: string;
-  rating?: number;
-  imageUrl?: string;
-};
+import Image from "next/image";
+import { RestaurantType } from "@/src/app/types/restaurant";
 
 type Props = {
   apiEndpoint?: string;
-  onSelect?: (restaurant: Restaurant) => void;
+  onSelect?: (restaurant: RestaurantType) => void;
 };
 
 export default function Restaurants({ apiEndpoint = "/api/restaurants", onSelect }: Props) {
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [restaurants, setRestaurants] = useState<RestaurantType[]>([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -57,11 +50,13 @@ export default function Restaurants({ apiEndpoint = "/api/restaurants", onSelect
             key={r.id}
           >
             <div>
-              {r.imageUrl ? (
-                <img
-                  src={r.imageUrl}
+              {r.image_url ? (
+                <Image
+                  src={r.image_url}
                   alt={r.name}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  width={200}
+                  height={200}
+                  style={{ width: "100%", height: "auto", objectFit: "cover" }}
                 />
               ) : (
                 <span style={{ color: "#888", fontSize: 12 }}>No image</span>
