@@ -6,6 +6,7 @@ import Restaurants from "../Restaurants";
 export default function DesktopRestaurantsView({ filters }: { filters: FilterType[] }) {
 
     return <div>
+        {/* TODO: Fix dark mode, currently illegible black text on black background */}
         <Image
             src="/logos/Vector.svg"
             alt="Munchies"
