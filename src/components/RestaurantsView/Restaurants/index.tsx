@@ -61,7 +61,7 @@ export default function Restaurants({
 
       {loading && <div>Loading restaurants…</div>}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-[1015px]">
         {filteredRestaurants.map((r) => (
 
           // In the future, this can become its own RestaurantCard component as it gains complexity.

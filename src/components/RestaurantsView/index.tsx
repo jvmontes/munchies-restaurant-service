@@ -45,10 +45,10 @@ export default function RestaurantsView() {
 
   return (
     <>
-      {isLoading ? (
+      {isLoading || isMobile === undefined ? (
         <p>Loading your experience...</p>
       ) : (
-        <div className="bg-(--color-brand-off-white)">
+        <div className="bg-(--color-brand-off-white) min-h-screen">
           {isMobile ? (
             <MobileRestaurantsView
               filters={filters}
