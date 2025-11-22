@@ -17,16 +17,18 @@ export default function DesktopRestaurantsView({
 }: DesktopRestaurantsViewProps) {
   return (
     <div>
-      <AppLogo width={274} height={40} className="pt-16" />
+      <AppLogo width={274} height={40} className="pt-16 pl-8" />
       <div className="flex w-full">
         <SideBar />
-        <div>
+        <div className="flex-1">
           <FilterCardCollection
             filters={filters}
             selectedFilterId={selectedFilterId}
             onSelectFilter={onSelectFilter}
           />
-          <Restaurants selectedFilterId={selectedFilterId} />
+          <div className="ml-4">
+            <Restaurants selectedFilterId={selectedFilterId} />
+          </div>
         </div>
       </div>
     </div>
