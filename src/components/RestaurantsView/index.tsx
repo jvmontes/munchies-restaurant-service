@@ -13,7 +13,7 @@ export default function RestaurantsView() {
   const isMobile = useIsMobile();
 
   const handleFilterSelect = (filterId: string) => {
-    setSelectedFilterId(prev => prev === filterId ? null : filterId);
+    setSelectedFilterId((prev) => (prev === filterId ? null : filterId));
   };
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function RestaurantsView() {
       {isLoading ? (
         <p>Loading your experience...</p>
       ) : (
-        <>
+        <div className="bg-(--color-brand-off-white)">
           {isMobile ? (
             <MobileRestaurantsView
               filters={filters}
@@ -62,7 +62,7 @@ export default function RestaurantsView() {
               onSelectFilter={handleFilterSelect}
             />
           )}
-        </>
+        </div>
       )}
     </>
   );

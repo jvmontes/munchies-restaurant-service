@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { RestaurantType } from "@/src/app/types/restaurant";
@@ -12,7 +12,7 @@ type Props = {
 export default function Restaurants({
   apiEndpoint = "/api/restaurants",
   onSelect,
-  selectedFilterId
+  selectedFilterId,
 }: Props) {
   const [restaurants, setRestaurants] = useState<RestaurantType[]>([]);
   const [loading, setLoading] = useState(false);
@@ -41,10 +41,13 @@ export default function Restaurants({
   }, [apiEndpoint]);
 
   const filteredRestaurants = selectedFilterId
-    ? restaurants.filter(r => {
+    ? restaurants.filter((r) => {
         const matches = r.filter_ids.includes(selectedFilterId);
         if (matches) {
-          console.log(`Restaurant "${r.name}" matches filter ${selectedFilterId}:`, r.filter_ids);
+          console.log(
+            `Restaurant "${r.name}" matches filter ${selectedFilterId}:`,
+            r.filter_ids
+          );
         }
         return matches;
       })
@@ -60,21 +63,15 @@ export default function Restaurants({
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {filteredRestaurants.map((r) => (
-          <div
-            key={r.id}
-            className="border border-gray-200 rounded-lg p-4"
-          >
+
+          // In the future, this can become its own RestaurantCard component as it gains complexity.
+          <div key={r.id} className="border border-black/10 bg-(--color-brand-white) flex justify-between rounded-lg p-4">
+            <p>{r.name}</p>
             {r.image_url ? (
-              <Image
-                src={r.image_url}
-                alt={r.name}
-                width={140}
-                height={140}
-              />
+              <Image src={r.image_url} alt={r.name} width={140} height={140} />
             ) : (
               <span style={{ color: "#888", fontSize: 12 }}>No image</span>
             )}
-            <p>{r.name}</p>
           </div>
         ))}
       </div>

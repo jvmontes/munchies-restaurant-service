@@ -6,6 +6,8 @@
 
   /* Brand colors - TODO: Move to tailwind.config.ts theme in the future */
   --color-brand-green: #00703A;
+  --color-brand-off-white: #FAFAFA;
+  --color-brand-white: #FFFFFF;
 }
 
 @theme inline {

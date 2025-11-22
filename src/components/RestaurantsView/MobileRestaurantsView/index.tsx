@@ -19,8 +19,8 @@ export default function MobileRestaurantsView({
         <div className="px-4 pt-14">
             <AppLogo width={168} height={24} />
             {/* TODO: Update UI to match comps, placeholders for now */}
-            <h2>Delivery Time</h2>
-            <p>Delivery Time Cards</p>
+            {/* <h2>Delivery Time</h2> */}
+            {/* <p>Delivery Time Cards</p> */}
         </div>
         <FilterCardCollection
             filters={filters}
