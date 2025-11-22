@@ -9,20 +9,20 @@ interface FilterCardProps extends FilterType {
 export default function FilterCard({ id, name, image_url, isSelected, onClick }: FilterCardProps) {
     return (
         <article
-            className={`w-40 border shrink-0 rounded-lg cursor-pointer ${
+            className={`w-40 flex border shrink-0 rounded-lg cursor-pointer ${
                 isSelected
                     ? 'bg-(--color-brand-green)'
                     : 'border-gray-200'
             }`}
             onClick={onClick}
-        >
+            >
+            <p className={isSelected ? 'text-white' : ''}>{name}</p>
             <Image
                 src={image_url}
                 alt={name}
-                width={100}
-                height={100}
+                width={80}
+                height={80}
             />
-            <p className={isSelected ? 'text-white' : ''}>{name}</p>
         </article>
     )
 }
