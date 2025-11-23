@@ -41,16 +41,7 @@ export default function Restaurants({
   }, [apiEndpoint]);
 
   const filteredRestaurants = selectedFilterId
-    ? restaurants.filter((r) => {
-        const matches = r.filter_ids.includes(selectedFilterId);
-        if (matches) {
-          console.log(
-            `Restaurant "${r.name}" matches filter ${selectedFilterId}:`,
-            r.filter_ids
-          );
-        }
-        return matches;
-      })
+    ? restaurants.filter((r) => r.filter_ids.includes(selectedFilterId))
     : restaurants;
 
   return (
@@ -60,12 +51,17 @@ export default function Restaurants({
       </header>
 
       {loading && <div>Loading restaurants…</div>}
+      {error && (
+        <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-red-800">Unable to load restaurants. Please try again later.</p>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-[1015px]">
         {filteredRestaurants.map((r) => (
 
           // In the future, this can become its own RestaurantCard component as it gains complexity.
-          <div key={r.id} className="border border-black/10 bg-(--color-brand-white) flex justify-between rounded-lg p-4">
+          <div key={r.id} className="border border-black/10 bg-[var(--color-brand-white)] flex justify-between rounded-lg p-4">
             <p>{r.name}</p>
             {r.image_url ? (
               <Image src={r.image_url} alt={r.name} width={140} height={140} />

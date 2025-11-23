@@ -8,6 +8,7 @@ import DesktopRestaurantsView from "./DesktopRestaurantsView";
 export default function RestaurantsView() {
   const [filters, setFilters] = useState<FilterType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [selectedFilterId, setSelectedFilterId] = useState<string | null>(null);
 
   const isMobile = useIsMobile();
@@ -22,6 +23,7 @@ export default function RestaurantsView() {
     const fetchFilter = async () => {
       try {
         setIsLoading(true);
+        setError(null);
         const [filterResponse] = await Promise.all([fetch("/api/filter")]);
 
         if (!filterResponse.ok) {
@@ -35,6 +37,7 @@ export default function RestaurantsView() {
         setFilters(filterData.filters);
       } catch (error) {
         console.error("Error fetching filters:", error);
+        setError("Unable to load filters. Please try again later.");
       } finally {
         setIsLoading(false);
       }
@@ -47,8 +50,12 @@ export default function RestaurantsView() {
     <>
       {isLoading || isMobile === undefined ? (
         <p>Loading your experience...</p>
+      ) : error ? (
+        <div className="p-8 bg-red-50 border border-red-200 rounded-lg m-8">
+          <p className="text-red-800">{error}</p>
+        </div>
       ) : (
-        <div className="bg-(--color-brand-off-white) min-h-screen">
+        <div className="bg-[var(--color-brand-off-white)] min-h-screen">
           {isMobile ? (
             <MobileRestaurantsView
               filters={filters}

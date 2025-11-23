@@ -1,8 +1,39 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Features
+
+- Browse restaurants with category filtering
+- Responsive design (mobile & desktop layouts)
+- Dark mode support
+- API response caching (5-minute TTL)
+- Real-time filter updates
+- Error handling with user-friendly messages
+
+## Tech Stack
+
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- External REST API integration
+
 ## Getting Started
 
-First, run the development server:
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Set Up Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```bash
+API_BASE_URL=https://work-test-web-2024-eze6j4scpq-lz.a.run.app/api
+API_BASE_DOMAIN=https://work-test-web-2024-eze6j4scpq-lz.a.run.app
+```
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
