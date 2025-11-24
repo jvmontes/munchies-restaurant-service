@@ -9,6 +9,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Real-time filter updates
 - Error handling with user-friendly messages
 
+## Future Improvements
+
+- Integrate styles from Figma (fonts, heading, appropriate sizes)
+- Splash page for mobile
+- Sidebar filter functionality
+- Extract RestaurantCard into a component
+- Skeleton for Sidebar components
+- Create reusable components library from Figma designs
+
 ## Tech Stack
 
 - Next.js 15 (App Router)
