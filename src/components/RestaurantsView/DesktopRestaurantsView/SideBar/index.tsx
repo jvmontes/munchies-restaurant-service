@@ -1,5 +1,5 @@
 export default function SideBar() {
-    return <div className="flex flex-col min-w-[239px] p-4 ml-4 mt-4 rounded-lg border border-black/10 bg-[var(--color-brand-white)]">
+    return <div className="flex flex-col min-w-[239px] p-4 ml-4 mt-4 rounded-lg border border-black/10 dark:border-white/10 bg-[var(--color-card-bg)]">
         <h1>Filter</h1>
         <h2>Food Category</h2>
         {/* Display filter options */}

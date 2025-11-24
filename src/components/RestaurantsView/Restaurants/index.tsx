@@ -61,7 +61,7 @@ export default function Restaurants({
         {filteredRestaurants.map((r) => (
 
           // In the future, this can become its own RestaurantCard component as it gains complexity.
-          <div key={r.id} className="border border-black/10 bg-[var(--color-brand-white)] flex justify-between rounded-lg p-4">
+          <div key={r.id} className="border border-black/10 dark:border-white/10 bg-[var(--color-card-bg)] flex justify-between rounded-lg p-4">
             <p>{r.name}</p>
             {r.image_url ? (
               <Image src={r.image_url} alt={r.name} width={140} height={140} />

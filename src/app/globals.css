@@ -8,6 +8,10 @@
   --color-brand-green: #00703A;
   --color-brand-off-white: #FAFAFA;
   --color-brand-white: #FFFFFF;
+
+  /* Theme-aware colors */
+  --color-card-bg: #FFFFFF;
+  --color-page-bg: #FAFAFA;
 }
 
 @theme inline {
@@ -21,6 +25,10 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    /* Dark mode card colors */
+    --color-card-bg: #1a1a1a;
+    --color-page-bg: #0a0a0a;
   }
 }
 

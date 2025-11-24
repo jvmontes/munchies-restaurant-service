@@ -55,7 +55,7 @@ export default function RestaurantsView() {
           <p className="text-red-800">{error}</p>
         </div>
       ) : (
-        <div className="bg-[var(--color-brand-off-white)] min-h-screen">
+        <div className="bg-[var(--color-page-bg)] min-h-screen">
           {isMobile ? (
             <MobileRestaurantsView
               filters={filters}

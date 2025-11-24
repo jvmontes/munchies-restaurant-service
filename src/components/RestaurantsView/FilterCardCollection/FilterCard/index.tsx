@@ -9,10 +9,10 @@ interface FilterCardProps extends FilterType {
 export default function FilterCard({ id, name, image_url, isSelected, onClick }: FilterCardProps) {
     return (
         <article
-            className={`w-40 flex border border-black/10 shrink-0 rounded-lg cursor-pointer ${
+            className={`w-40 flex border shrink-0 rounded-lg cursor-pointer ${
                 isSelected
-                    ? 'bg-[var(--color-brand-green)]'
-                    : 'bg-[var(--color-brand-white)]'
+                    ? 'bg-[var(--color-brand-green)] border-[var(--color-brand-green)]'
+                    : 'bg-[var(--color-card-bg)] border-black/10 dark:border-white/10'
             }`}
             onClick={onClick}
             >
